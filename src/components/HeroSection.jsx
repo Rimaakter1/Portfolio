@@ -1,9 +1,17 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import myImg from "../assets/portfolio-img.png";
-
+import resume from "../assets/MERN-Stack-Developer-Resume-of-Rima-Akter.pdf";
 
 const HeroSection = () => {
+    const handleDownload = () => {
+        const link = document.createElement("a");
+        link.href = resume;
+        link.setAttribute("download", "Resume.pdf");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className='bg-gray-900'>
             <div
@@ -70,16 +78,15 @@ const HeroSection = () => {
                         </div>
 
                         <div className="pt-4">
-                            <motion.a
-                                href="/resume.pdf"
-                                download
+                            <motion.button
+                                onClick={handleDownload}
                                 className="bg-gradient-to-r from-blue-400 to-teal-400 text-white font-bold px-10 py-4 rounded-lg shadow-lg hover:shadow-2xl transform transition-all hover:scale-105 border border-gray-700 hover:border-teal-500"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1, duration: 1 }}
                             >
                                 Download Resume
-                            </motion.a>
+                            </motion.button>
                         </div>
 
                     </div>
